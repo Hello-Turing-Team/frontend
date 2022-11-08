@@ -1,36 +1,26 @@
 import React, { useState } from 'react'
-import { Button } from "./components/Button";
+import {LoginPage} from "./pages/login";
 
 const MainPage = ({ routeTo }) => {
     return (
         <div>
             MainPage
-            <button onClick={() => routeTo("about")}>Go to About page</button>
-        </div>
-    )
-}
-
-const AboutPage = ({ routeTo }) => {
-    return (
-        <div>
-            About Page
-            <button onClick={() => routeTo("main")}>Go to Main page</button>
+            <button onClick={() => routeTo("login")}>Login</button>
         </div>
     )
 }
 
 export const App = () => {
-    const [page, setPage] = useState('main')
+    const [page, setPage] = useState('login')
 
     const routeTo = (page) => {
-        window.location.replace(`/${page}`)
         setPage(page)
     }
 
     return (
         <div>
             {page === 'main' ? <MainPage routeTo={routeTo} /> : null}
-            {page === 'about' ? <AboutPage routeTo={routeTo} /> : null}
+            {page === 'login' ? <LoginPage routeTo={routeTo} /> : null}
         </div>
     )
 }
